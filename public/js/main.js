@@ -48,7 +48,6 @@ $(function () {
       return obj;
     }, {})
     if (e.isDefaultPrevented()) {
-      console.log('test7');
       // handle the invalid form...
     } else {
       e.preventDefault();

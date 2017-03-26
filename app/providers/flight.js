@@ -42,7 +42,6 @@ module.exports = {
     });
     Promise.all(promises)
     .then(function() {
-      console.log('flights for ' + airlineCode, flights);
       callback(flights);
     })
     // TODO: error handle for flight_search api endpoint

@@ -33,7 +33,6 @@ router.get('/airports', function (req, res) {
 // Expecting: {travelDate: '2018-05-05', airportsFrom: '["AAA", "AAB"]', airportsTo: '["BBB"]'}
 // Currently only one toAirport supported, if multiple sent, the first one will be used
 router.post('/search', function (req, res) {
-  console.log('test5', req.body);
   var date = 'travelDate' in req.body ? req.body.travelDate : null;
   var airportsFrom = 'airportsFrom' in req.body ? JSON.parse(req.body.airportsFrom) : null;
   var airportsTo = 'airportsTo' in req.body ? JSON.parse(req.body.airportsTo) : null;
@@ -63,7 +62,6 @@ router.post('/search', function (req, res) {
     });
     Promise.all(promises)
     .then(function() {
-      console.log('all flights', flights);
       res.set('Content-Type', 'application/json');
       res.send(JSON.stringify(flights));
     })
