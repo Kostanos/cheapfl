@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Search cheapest flight</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twix.js/1.1.4/twix.min.js"></script>
+    <script type="text/javascript" src="js/flightsResult.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 class="text-center">Search cheapest flight</h2>
+      <form class="form-inline" id="flightsForm" role="form" data-toggle="validator">
+        <div class="form-group col-md-6">
+          <label class="col-md-4" for="airportsFrom">Location From:</label>
+          <div class="col-md-8">
+            <select id="airportsFrom" name="airportsFrom" class="form-control location"></select>
+            <div class="help-block">Chose original location</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-4" for="airportsTo">Location To:</label>
+          <div class="col-md-8">
+            <select id="airportsTo" name="airportsTo" class="form-control location"></select>
+            <div class="help-block">Chose destination</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label class="col-md-4" for="travelDate">Travel date:</label>
+          <div class="col-md-8">
+            <input type="text" id="travelDate" name="travelDate" class="form-control"/>
+            <div class="help-block">Chose decired day of travel</div>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <button id="submit" type="submit" class="btn btn-default">Search flights</button>
+        </div>
+      </form>
+      <div id="flightsResult" class="col-md-12"></div>
+    </div>
+  </body>
+
+</html>
