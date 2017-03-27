@@ -36,15 +36,18 @@ router.post('/search', function (req, res) {
   var date = 'travelDate' in req.body ? req.body.travelDate : null;
   var airportsFrom = 'airportsFrom' in req.body ? JSON.parse(req.body.airportsFrom) : null;
   var airportsTo = 'airportsTo' in req.body ? JSON.parse(req.body.airportsTo) : null;
-  // TODO: return multiple missing fields at a time
+  // TODO: return multiple errors fields at a time
   if (!date){
-    throw new Exception('Missing travel date', 'Missing value');
+    throw new Exception('Missing travel date');
   }
   if (!airportsFrom){
-    throw new Exception('Missing from airport', 'Missing value');
+    throw new Exception('Missing from airport');
   }
   if (!airportsTo){
-    throw new Exception('Missing to airport', 'Missing value');
+    throw new Exception('Missing to airport');
+  }
+  if (req.body.airportsFrom === req.body.airportsTo){
+    throw new Exception('From and To locations should not be the same');
   }
 
   // TODO: cache airlines for at least 6 hours, will help a lot in performance, even cache for 10 min will help

@@ -42,7 +42,17 @@ $(function () {
     minimumInputLength: 2,
   });
 
-  $('#flightsForm').validator().on('submit', function (e) {
+  $('#flightsForm').validator({
+    custom: {
+      uniquelocation: function($el){
+        var matchElName = $el.data('uniquelocation');
+        var matchValue = $('#' + matchElName).val();
+        if ($el.val() === matchValue){
+          return 'Locations should not be the same';
+        }
+      }
+    }
+  }).on('submit', function (e) {
     var formData = $(e.target).serializeArray().reduce(function(obj, item) {
       obj[item.name] = item.value;
       return obj;
@@ -62,9 +72,17 @@ $(function () {
           url: '/search',
           type: 'post',
           data: fData,
-          success: function(data) {
-            flightsResult.setTabContent(sDate, data, {field: 'price', dir: 1});
-          }
+        }).done(function(data) {
+          $('#submitError').text('');
+          flightsResult.setTabContent(sDate, data, {field: 'price', dir: 1});
+        }).fail(function (request, status, error) {
+          var errorMsg = 'Undefined error, please try again';
+          try{
+            var eData = JSON.parse(request.responseText);
+            errorMsg = eData.message;
+          } catch(err) {}
+          $('#submitError').text(errorMsg);
+          flightsResult.setError(errorMsg);
         });
       })
     }

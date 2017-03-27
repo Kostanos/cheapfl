@@ -23,30 +23,39 @@
   <body>
     <div class="container">
       <h2 class="text-center">Search cheapest flight</h2>
-      <form class="form-inline" id="flightsForm" role="form" data-toggle="validator">
+      <form class="form-inline" id="flightsForm" role="form">
         <div class="form-group col-md-6">
           <label class="col-md-4" for="airportsFrom">Location From:</label>
           <div class="col-md-8">
-            <select id="airportsFrom" name="airportsFrom" class="form-control location"></select>
-            <div class="help-block">Chose original location</div>
+            <select id="airportsFrom" name="airportsFrom" class="form-control location"
+              data-required-error="Chose dispatch location"
+              data-uniquelocation="airportsTo"
+              required></select>
+            <div class="help-block with-errors"></div>
           </div>
         </div>
         <div class="form-group col-md-6">
           <label class="col-md-4" for="airportsTo">Location To:</label>
           <div class="col-md-8">
-            <select id="airportsTo" name="airportsTo" class="form-control location"></select>
-            <div class="help-block">Chose destination</div>
+            <select id="airportsTo" name="airportsTo" class="form-control location"
+              data-required-error="Chose destination location"
+              data-uniquelocation="airportsFrom" required></select>
+            <div class="help-block with-errors"></div>
           </div>
         </div>
         <div class="form-group col-md-6">
           <label class="col-md-4" for="travelDate">Travel date:</label>
           <div class="col-md-8">
-            <input type="text" id="travelDate" name="travelDate" class="form-control"/>
-            <div class="help-block">Chose decired day of travel</div>
+            <input type="text" id="travelDate" name="travelDate" class="form-control"
+              pattern="^\d{4}-\d{2}-\d{2}$"
+              data-required-error="Chose decired day of travel"
+              required/>
+            <div class="help-block with-errors"></div>
           </div>
         </div>
         <div class="form-group col-md-6">
           <button id="submit" type="submit" class="btn btn-default">Search flights</button>
+          <div class="help-block with-errors" id="submitError"></div>
         </div>
       </form>
       <div id="flightsResult" class="col-md-12"></div>

@@ -37,6 +37,10 @@ flightsResult = {
     });
     $container.html('').append($tabs).append($tabsContent);
   },
+  setError: function(message){
+    var $tabsContent = $('.tab-pane');
+    $tabsContent.html('').append($('<div class="error"></div>').text(message));
+  },
   // TODO: Add more orders and filters
   // sort = {field: 'field', dir: -1 or 1}
   setTabContent: function(date, flights, sort){
