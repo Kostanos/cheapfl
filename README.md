@@ -28,7 +28,5 @@
 * support for multiple "destination airports" as there are many cities with multiple airports - _providers/flight.js:26_
 * error handle for flight_search api endpoint - _providers/flight.js:48_
 
-* fix form validation
 * validate date if it is in the past
-* validate if source and destination locations are not equal
 * improve design
